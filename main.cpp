@@ -4,12 +4,13 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    LeastPath LP(5, false);
+    LeastPath LP(4, true);
     LP.printBoard();
-    return 0;
     while(LP.isDone() == false) {
         LP.move();
         LP.printBoard();
+        int z;
+        cin >> z;
     }
 }
 

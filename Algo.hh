@@ -1,7 +1,12 @@
 #include <iostream>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 enum Mov {
+    UNDEFINED,
     LEFT,
     RIGHT,
     UP,
@@ -14,6 +19,11 @@ struct Movement {
     Mov M;
 };
 typedef struct Movement Movement;
+
+typedef struct Position {
+    int x;
+    int y;
+}Position;
 
 class Algo {
     public:
@@ -30,12 +40,17 @@ class Algo {
         
     private:
         string algoName;
-        int size;
-        int **board;
         bool doLog;
         int widthModifier;
         struct Movement possibleMove;
         void setWidthModifier();
         void printLine();
+        virtual int findScore(Mov M) = 0;
+
+    protected:
+        int **board;
+        Position ePos;
+        int size;
+        Mov lastMove;
 };
 
